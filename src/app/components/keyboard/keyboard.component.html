@@ -1,0 +1,22 @@
+<div class="flex flex-col gap-2 items-center mt-4">
+  <div *ngFor="let row of keys" class="flex gap-1">
+    <button
+      *ngFor="let key of row"
+      (click)="onKey(key)"
+      class="px-2 py-1 border rounded text-sm transition active:scale-95 duration-100 bg-white hover:bg-gray-100">
+      {{ key }}
+    </button>
+  </div>
+  <div class="flex gap-2 mt-2">
+    <button
+      (click)="onKey('ENTER')"
+      class="px-3 py-1 border rounded transition active:scale-95 duration-100 bg-white hover:bg-gray-100">
+      Valider
+    </button>
+    <button
+      (click)="onKey('BACKSPACE')"
+      class="px-3 py-1 border rounded transition active:scale-95 duration-100 bg-white hover:bg-gray-100">
+      Supprimer
+    </button>
+  </div>
+</div>
