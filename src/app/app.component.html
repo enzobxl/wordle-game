@@ -27,7 +27,7 @@
   </div>
 
   <ng-container *ngIf="!showMenu">
-    <p *ngIf="mode === 'timed'" class="text-center font-semibold">Temps restant: {{ timeLeft }}s</p>
+    <p *ngIf="mode === 'timed'" class="text-center font-semibold mb-4">Temps restant: {{ timeLeft }}s</p>
     <app-game-board [board]="board"/>
 
     <div class="flex justify-center gap-2 my-4">
