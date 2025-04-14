@@ -1,4 +1,4 @@
-import {ComponentFixture} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, tick} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {MockBuilder, MockRender} from 'ng-mocks';
 import {GameStateService} from './services/game-state.service';
@@ -80,4 +80,53 @@ describe('AppComponent', () => {
     expect(component.gameOver).toBeTrue();
     expect(component.win).toBeTrue();
   });
+
+  describe('createEmptyTiles', () => {
+    it('should return the correct amount empty tiles', () => {
+      component.wordLength = 5;
+      component.currentGuess = 'abc';
+      expect(component.createEmptyTiles().length).toBe(2);
+
+      component.wordLength = 6;
+      component.currentGuess = 'abcd';
+      expect(component.createEmptyTiles().length).toBe(2);
+
+      component.wordLength = 7;
+      component.currentGuess = '';
+      expect(component.createEmptyTiles().length).toBe(7);
+    });
+
+    it('should return an empty array if guess is complete', () => {
+      component.wordLength = 4;
+      component.currentGuess = 'test';
+      expect(component.createEmptyTiles().length).toBe(0);
+    });
+  });
+
+  describe('returnToMenu', () => {
+    it('should only set showMenu to true', () => {
+      component.showMenu = false;
+      component.returnToMenu();
+      expect(component.showMenu).toBeTrue();
+    });
+  });
+
+  describe('timed mode', () => {
+    it('should start a 60-second timer and end the game when time runs out', fakeAsync(() => {
+      component.mode = 'timed';
+      component.startGame();
+
+      expect(component.timeLeft).toBe(60);
+
+      tick(59000);
+      expect(component.timeLeft).toBe(1);
+      expect(component.gameOver).toBeFalse();
+
+      tick(1000);
+      expect(component.timeLeft).toBe(0);
+      expect(component.gameOver).toBeTrue();
+      expect(component.win).toBeFalse();
+    }));
+  });
+
 });

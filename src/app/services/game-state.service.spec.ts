@@ -61,7 +61,7 @@ describe('GameStateService', () => {
 
     expect(result.win).toBeFalse();
     expect(result.gameOver).toBeTrue();
-    expect(service.stats.wins).toBe(0); // no win, no avgAttempts change
+    expect(service.stats.wins).toBe(0);
     expect(service.stats.streak).toBe(0);
   });
 
@@ -72,21 +72,20 @@ describe('GameStateService', () => {
     const result = service.guess('PLANT');
 
     expect(result.win).toBeTrue();
-    expect(service.stats.wins).toBe(0); // tracking disabled
+    expect(service.stats.wins).toBe(0);
     expect(service.stats.avgAttempts).toBe(0);
   });
 
   it('should calculate avgAttempts correctly over multiple wins', () => {
     service.stats.wins = 2;
-    service.stats.avgAttempts = 4; // previous average
+    service.stats.avgAttempts = 4;
 
     service.newGame('LIGHT');
     service.attempts = ['AAA', 'BBB', 'CCC'];
     mockGameLogicService.getFeedback.and.returnValue(['green', 'green', 'green', 'green', 'green']);
 
-    const result = service.guess('LIGHT');
+    service.guess('LIGHT');
 
-    // (4*2 + 3) / 3 = 11/3 = 3.666... -> 4
     expect(service.stats.avgAttempts).toBe(4);
   });
 });

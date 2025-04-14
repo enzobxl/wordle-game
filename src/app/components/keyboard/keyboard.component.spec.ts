@@ -38,4 +38,15 @@ describe('KeyboardComponent', () => {
     component.onKey('M');
     expect(component.key.emit).toHaveBeenCalledWith('M');
   });
+
+  it('should call onKey() with the uppercase key on keydown event', () => {
+    const fixture = MockRender(KeyboardComponent);
+    const component = fixture.point.componentInstance;
+    const spy = spyOn(component, 'onKey');
+
+    const event = new KeyboardEvent('keydown', {key: 'a'});
+    document.dispatchEvent(event);
+
+    expect(spy).toHaveBeenCalledOnceWith('A');
+  });
 });

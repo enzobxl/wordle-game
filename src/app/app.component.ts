@@ -44,7 +44,6 @@ export class AppComponent {
 
   newGame() {
     this.secretWord = this.wordValidatorService.getRandomWord(this.wordLength);
-    console.log(this.secretWord)
     this.gameStateService.newGame(this.secretWord, this.mode !== 'practice');
     this.board = [];
     this.currentGuess = '';

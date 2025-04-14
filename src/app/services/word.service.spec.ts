@@ -14,8 +14,8 @@ describe('WordService', () => {
     });
 
     it('should return false for a word with wrong length', () => {
-      expect(service.isValid('CHAT', 5)).toBeFalse();  // only 4 letters
-      expect(service.isValid('ANCIENS', 6)).toBeFalse(); // 7 letters
+      expect(service.isValid('CHAT', 5)).toBeFalse();
+      expect(service.isValid('ANCIENS', 6)).toBeFalse();
     });
 
     it('should return false for a word with non-alphabetic characters', () => {
