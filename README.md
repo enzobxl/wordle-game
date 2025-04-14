@@ -1,35 +1,63 @@
-# WordleGame
+# 🧩 Wordle Game - Angular Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+Ce projet est une implémentation du jeu **Wordle** développée avec **Angular 19**. Il met l'accent sur la qualité des tests unitaires.
 
-## Development server
+## 📦 Stack technique
 
-To start a local development server, run:
+- **Framework :** Angular 19
+- **Langage :** TypeScript
+- **Tests :** Jasmine, Karma, ng-mocks
+- **Style :** Tailwind CSS
 
-```bash
-npm run start
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🚀 Installation & Démarrage
 
-## Building
-
-To build the project run:
-
-```bash
-npm run build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 1. Installation des dépendances
 
 ```bash
-npm run test
+npm install
 ```
 
-## Additional Resources
+### 2. Lancement de l'application
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm start
+```
+
+L'application est disponible à l'adresse : [http://localhost:4200](http://localhost:4200)
+
+---
+
+## 🧪 Exécuter les tests
+
+```bash
+npm test
+```
+
+ou pour exécuter les tests avec ChromeHeadless :
+
+```bash
+npm run test-angular
+```
+
+Un rapport de couverture sera généré dans le dossier `coverage/`.
+
+---
+
+## ✅ Fonctionnalités principales
+
+### Requises
+- ✅ Validation de mots (5 lettres, uniquement alphabétiques)
+- ✅ Vérification des lettres (vert, jaune, gris)
+- ✅ Gestion du nombre d’essais et des conditions de fin de partie
+
+### Intermédiaires
+- ✅ Dictionnaire de mots valides
+- ✅ Prise en compte correcte des lettres en double
+- ✅ Statistiques du joueur (victoires, séries, moyenne d’essais)
+
+### Avancées
+- ✅ Plusieurs modes de jeu (mode minuteur, mode entraînement)
+- ✅ Longueurs de mots dynamiques
+- ✅ Système de score
